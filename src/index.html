@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/stencil-tester-watch.esm.js"></script>
+    <script nomodule src="/build/stencil-tester-watch.js"></script>
+  </head>
+  <body>
+    <my-component id='component' first="Value:" test='20' tester='[{x: 23, y:74}, {x: 6, y:14}]'></my-component>
+    <button id='button-change'>Change</button>
+    <button id='button-clear'>Clear</button>
+  </body>
+  <script>
+    var change = document.getElementById("button-change");
+    var clear = document.getElementById("button-clear");
+    var component = document.getElementById("component");
+    component.test=14
+    component.tester=[{x: 23, y:74}, {x: 6, y:14}];
+    let a = [{x: 23, y:74}, {x: 6, y:14}];
+    change.onclick = val => {
+      component.test = component.test - 1;
+      let arr = [];
+      arr = arr.push(...a);
+      component.tester = arr;
+      // component.tester = [...component.tester, {x: 6 + component.tester.length, y:14 + component.tester.length}];
+    };
+    clear.onclick = val => {
+      component.test = component.test - 1;
+      component.tester = [];
+    };
+  </script>
+</html>
